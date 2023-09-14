@@ -103,61 +103,13 @@ import { compareAsc, compareDesc } from 'date-fns';
 import IconArrowUp from '@/components/icons/IconArrowUp.vue';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import { getRandomColor } from '@/utils/utils';
+import { defaultList } from '@/utils/utils';
 
 const currentPage = ref(1);
 const perPage = ref(4);
 const searchKey = ref();
 
-const noteList = ref<INoteItem[]>([
-  {
-    id: 1,
-    content: 'Test item',
-    time: new Date(2023, 1, 10, 11, 20),
-    background: getRandomColor(),
-  },
-  {
-    id: 2,
-    content: 'Test item 1',
-    time: new Date(2023, 1, 11, 11, 20),
-    background: getRandomColor(),
-  },
-  {
-    id: 3,
-    content: 'Test item 2',
-    time: new Date(2023, 1, 12, 11, 20),
-    background: getRandomColor(),
-  },
-  {
-    id: 4,
-    content: 'Test item 3',
-    time: new Date(2023, 1, 13, 11, 20),
-    background: getRandomColor(),
-  },
-  {
-    id: 5,
-    content: 'Test item 4',
-    time: new Date(2023, 1, 14, 11, 20),
-    background: getRandomColor(),
-  },
-  {
-    id: 6,
-    content: 'New 1',
-    time: new Date(2023, 1, 14, 11, 20),
-    background: getRandomColor(),
-  },
-  {
-    id: 7,
-    content: 'New 2',
-    time: new Date(2023, 1, 14, 11, 20),
-    background: getRandomColor(),
-  },
-  {
-    id: 8,
-    content: 'New 3',
-    time: new Date(2023, 1, 14, 11, 20),
-    background: getRandomColor(),
-  },
-]);
+const noteList = ref<INoteItem[]>(defaultList.slice(0));
 
 const totalPages = computed(() => Math.ceil(noteList.value.length / perPage.value));
 
@@ -168,7 +120,6 @@ const displayedList = computed(() => {
   list.sort((l, r) =>
     isAscOrder.value ? compareAsc(l.time, r.time) : compareDesc(l.time, r.time)
   );
-  console.log(searchKey.value, currentPage.value, list.length, '--------');
   return list
     .filter((item) => {
       return searchKey.value
@@ -182,16 +133,18 @@ const isShowModal = ref(false);
 const newNote = ref('');
 
 const addNewNote = () => {
-  noteList.value.push({
-    id: noteList.value.length + 1,
-    content: newNote.value,
-    time: new Date(),
-    background: getRandomColor(),
-  });
+  noteList.value = [
+    ...noteList.value,
+    {
+      id: noteList.value.length + 1,
+      content: newNote.value,
+      time: new Date(),
+      background: getRandomColor(),
+    },
+  ];
   closeModal();
 };
 const closeModal = () => {
-  console.log('close modal');
   newNote.value = '';
   isShowModal.value = false;
 };

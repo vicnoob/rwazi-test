@@ -1,6 +1,5 @@
 // Import the function to be tested
-import { backgroundColors } from './constant';
-import { getRandomColor } from './utils';
+import { getRandomColor, backgroundColors } from './utils';
 import { describe, it, expect } from 'vitest';
 
 describe('getRandomColor', () => {

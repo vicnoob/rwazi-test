@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="item"
-    :class="`w-full h-40 flex flex-col justify-between p-4 rounded-lg`"
+    class="item-container w-full h-40 flex flex-col justify-between p-4 rounded-lg"
     :style="{
       backgroundColor: `${item.background}`,
     }"

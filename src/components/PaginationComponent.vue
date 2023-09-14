@@ -10,7 +10,7 @@
           '!text-gray-400': isFirstPage,
           'cursor-not-allowed': isFirstPage,
         }"
-        class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        class="back-btn relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >Previous</a
       >
       <a
@@ -20,7 +20,7 @@
           '!text-gray-400': isLastPage,
           'cursor-not-allowed': isLastPage,
         }"
-        class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        class="next-btn relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >Next</a
       >
     </div>
@@ -30,7 +30,7 @@
           <a
             href="#"
             @click.prevent="changePage(currentPage - 1)"
-            class="relative inline-flex items-center rounded-l-md px-2 py-2 text-black ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            class="back-btn relative inline-flex items-center rounded-l-md px-2 py-2 text-black ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             :class="{
               '!text-gray-400': isFirstPage,
               'cursor-not-allowed': isFirstPage,
@@ -55,7 +55,7 @@
               'bg-indigo-600 text-white': page === currentPage,
             }"
             @click.prevent="changePage(page)"
-            class="w-10 relative z-10 inline-flex items-center ring-1 ring-inset ring-gray-300 text-gray-900 px-4 py-2 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            class="page-number w-10 relative z-10 inline-flex items-center ring-1 ring-inset ring-gray-300 text-gray-900 px-4 py-2 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             {{ page }}
           </a>
@@ -66,7 +66,7 @@
               '!text-gray-400': isLastPage,
               'cursor-not-allowed': isLastPage,
             }"
-            class="relative inline-flex items-center rounded-r-md px-2 py-2 text-black ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            class="next-btn relative inline-flex items-center rounded-r-md px-2 py-2 text-black ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
           >
             <span class="sr-only">Next</span>
             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
